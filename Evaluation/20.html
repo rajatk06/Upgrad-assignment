@@ -1,0 +1,142 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="main">
+    <div class="box">
+      <div class="button-box">
+        <div id="btn"></div>
+        <button class="toggle-btn" onclick="login()">Log In</button>
+        <button class="toggle-btn" onclick="register()">Sign Up</button>
+      </div>
+      <div class="icons">
+        <img src="f.png" />
+        <img src="twi.png" />
+        <img src="ggl.png" />
+      </div>
+      <div id="login" class="input-group">
+        <input
+          type="text"
+          class="input-field"
+          id="uid"
+          placeholder="Enter User ID"
+          required
+        /><br />
+        <label id="errid"></label><br />
+        <input
+          type="password"
+          class="input-field"
+          id="pid"
+          placeholder="Enter Password"
+          required
+        /><label id="errpass"></label><br />
+        <input type="checkbox" class="check-box" /><span>
+          Remember Password
+        </span>
+        <button id="loginSubmit" onclick="loginSubmit()" class="submit-btn">
+          Log In
+        </button>
+      </div>
+      <div id="register" class="input-group">
+        <input
+          type="text"
+          id="rid"
+          class="input-field"
+          placeholder="User Id"
+          required
+        />
+        <label id="erid"></label><br />
+        <input
+          type="email"
+          class="input-field"
+          id="remail"
+          placeholder="Email Id"
+          required
+        />
+        <label id="eremail"></label><br />
+        <input
+          type="password"
+          class="input-field"
+          id="rpass"
+          placeholder="Enter Password"
+          required
+        />
+        <label id="erpass"></label><br />
+        <input type="checkbox" class="check-box" /><span>
+          I agree to all terms and conditions.
+        </span>
+        <button onclick="registerSubmit()" class="submit-btn">
+          Register
+        </button>
+      </div>
+    </div>
+    <script>
+      var x = document.getElementById("login");
+      var y = document.getElementById("register");
+      var z = document.getElementById("btn");
+      var loginID = document.getElementById("uid");
+      var loginPass = document.getElementById("pid");
+      var regID = document.getElementById("rid");
+      var regEmail = document.getElementById("remail");
+      var regPass = document.getElementById("rpass");
+      var errid = document.getElementById("errid");
+      var errpass = document.getElementById("errpass");
+      var erid = document.getElementById("erid");
+      var eremail = document.getElementById("eremail");
+      var erpass = document.getElementById("erpass");
+
+
+      function register() {
+        x.style.left = "-400px";
+        y.style.left = "50px";
+        z.style.left = "110px";
+      }
+
+      function login() {
+        x.style.left = "50px";
+        y.style.left = "450px";
+        z.style.left = "0px";
+      }
+      function loginSubmit() {
+        let f = 1;
+        if (! /^[a-z0-9_]{4,}$/.test(loginID.value)) {
+          
+            errid.innerHTML = "Invalid User ID";
+            f = 0;
+          
+        }
+        else errid.innerHTML = "";
+
+        if (loginPass.value.length < 8) 
+        {          
+            errpass.innerHTML = "Invalid Password ";
+            f = 0;          
+        } 
+        else errpass.innerHTML = "";
+        if (f == 1) alert("Login Successful");
+      }
+      function registerSubmit() {
+        let f = 1;
+        if (! /^[a-z0-9_-]{4,}$/.test(regID.value)) 
+        {
+          erid.innerHTML = "Invalid User ID.";
+          f = 0;
+        }
+        else erid.innerHTML = "";
+        if (! /[a-zA-Z0-9._-]{3,}@[a-zA-Z0-9._-]{3,}[.]{1}[a-zA-Z0-9._-]{2,}/.test(regEmail.value)) 
+        {
+          eremail.innerHTML = "Invalid Email";
+          f = 0;
+        } 
+        else eremail.innerHTML = "";
+        if (regPass.value.length < 8) 
+        {
+          erpass.innerHTML = "Password should atleast have 8 characters";
+          f = 0;
+        } 
+        else erpass.innerHTML = "";
+        if (f == 1) alert("Successfuly registered");
+      }
+    </script>
+  </body>
+</html>
